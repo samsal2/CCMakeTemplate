@@ -28,7 +28,7 @@ set_target_properties(${PROJECT_NAME}
 
 # compile options
 target_compile_options(${PROJECT_NAME} PUBLIC
-	"$<$<COMPILE_LANG_AND_ID:CXX,Clang,AppleClang>:"
+	"$<$<COMPILE_LANG_AND_ID:C,Clang,AppleClang>:"
 		-Wall
 		-Wshadow
 		-Wextra
@@ -39,20 +39,20 @@ target_compile_options(${PROJECT_NAME} PUBLIC
 		-Wvla 
 		-fdiagnostics-color=always
 	">"
-	"$<$<AND:$<COMPILE_LANG_AND_ID:CXX,Clang,AppleClang>,$<CONFIG:Debug>>:"
+	"$<$<AND:$<COMPILE_LANG_AND_ID:C,Clang,AppleClang>,$<CONFIG:Debug>>:"
 		-O0
 		-g
 		-fsanitize=address
 		-fsanitize=undefined
 		-fsanitize=bounds
 	">"
-	"$<$<AND:$<COMPILE_LANG_AND_ID:CXX,Clang,AppleClang>,$<CONFIG:Release>>:"
+	"$<$<AND:$<COMPILE_LANG_AND_ID:C,Clang,AppleClang>,$<CONFIG:Release>>:"
 		-Ofast
 	">")
 
 # link options
 target_link_options(${PROJECT_NAME} PUBLIC
-	"$<$<AND:$<COMPILE_LANG_AND_ID:CXX,Clang,AppleClang>,$<CONFIG:Debug>>:"
+	"$<$<AND:$<COMPILE_LANG_AND_ID:C,Clang,AppleClang>,$<CONFIG:Debug>>:"
 		-fsanitize=address
 		-fsanitize=undefined
 		-fsanitize=bounds
